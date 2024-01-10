@@ -1,24 +1,26 @@
 import { useState } from 'react';
+import { useForkify } from '../hooks/useForkify';
 import { useRecipes } from '../hooks/useRecipes';
 
 function SearchInput() {
-  const [search, setSearch] = useState('');
   const { searchRecipes } = useRecipes();
+  const [search, setSearch] = useState('');
 
-  const handleSearch = () => {
+  const handleSearch = (e) => {
+    e.preventDefault();
     if (!search) return;
     searchRecipes(search);
     setSearch('');
   };
   return (
-    <div>
+    <form onSubmit={(e) => handleSearch(e)}>
       <input
         type="text"
         value={search}
         onChange={(e) => setSearch(e.target.value)}
       />
-      <button onClick={handleSearch}>Search</button>
-    </div>
+      <button type="submit">Search</button>
+    </form>
   );
 }
 

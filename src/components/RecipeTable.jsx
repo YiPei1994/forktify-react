@@ -1,9 +1,18 @@
-import { useRecipes } from '../hooks/useRecipes';
+import React from 'react';
+import { useForkify } from '../hooks/useForkify';
+import Recipe from './Recipe';
 
 function RecipeTable() {
-  const { data, isLoading } = useRecipes();
-  console.log(data);
-  return <div></div>;
+  const { loadingSearched, searchedRecipes } = useForkify();
+  if (loadingSearched) return;
+
+  return (
+    <div>
+      {searchedRecipes?.map((recipe) => (
+        <Recipe key={recipe.id} recipe={recipe} />
+      ))}
+    </div>
+  );
 }
 
 export default RecipeTable;
