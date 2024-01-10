@@ -2,8 +2,8 @@ import { useState } from 'react';
 import { useRecipes } from '../hooks/useRecipes';
 
 function SearchInput() {
-  const { searchRecipes } = useRecipes();
   const [search, setSearch] = useState('');
+  const { searchRecipes } = useRecipes();
 
   const handleSearch = () => {
     if (!search) return;

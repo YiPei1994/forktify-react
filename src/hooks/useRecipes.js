@@ -16,6 +16,6 @@ export const useRecipes = () => {
     },
     onError: (err) => toast.error(err.message),
   });
-  console.log(data);
+
   return { searchRecipes, isLoading, data };
 };
