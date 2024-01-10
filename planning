@@ -1,0 +1,15 @@
+stories
+
+1. as user i want to search for recipies, so i can find new ideas for meals
+2. as user, i want to be able to update the number of servings, so that i can cook a meal for diffrent number of people
+3. as a user, i want to bookmark recipes, so that i can review them later
+4. as a surer i want to be able to create my own recipeis, so that i have them all organized in the same app
+5. as a user i want to see my bookmarks and own recipes when i leave the app and come back later
+
+feature
+
+1. search , pagination for result , display detail for recipe
+2. change servings
+3. bookmark
+4. upload own recipies, user create recipy will be auto marked, user can see only their own recipe
+5. bookmark data in localstorage, on page load read bookmarks from page
