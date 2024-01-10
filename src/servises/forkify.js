@@ -8,7 +8,7 @@ export const getAllRecipes = async (search) => {
   }
 
   const data = await res.json();
-  const recipes = data.data.recipes;
+  const recipes = await data.data.recipes;
   return recipes;
 };
 

@@ -4,6 +4,7 @@ import toast from 'react-hot-toast';
 
 export const useRecipes = () => {
   const queryClient = useQueryClient();
+
   const {
     mutate: searchRecipes,
     isLoading,
@@ -12,10 +13,10 @@ export const useRecipes = () => {
     mutationFn: getAllRecipes,
     onSuccess: () => {
       toast.success('Recipe loaded');
-      queryClient.invalidateQueries({ queryKey: ['recipe'] });
+      queryClient.invalidateQueries({ queryKey: ['recipes'] });
     },
     onError: (err) => toast.error(err.message),
   });
-  console.log(data);
+
   return { searchRecipes, isLoading, data };
 };

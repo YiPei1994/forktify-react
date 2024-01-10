@@ -1,4 +1,4 @@
-function Recipe() {
+function Recipe({ recipe }) {
   return <div>recipe</div>;
 }
 
