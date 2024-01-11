@@ -6,7 +6,7 @@ function AppLayouts() {
   return (
     <div className="m-auto flex w-[80%] flex-col gap-6">
       <Header />
-      <div>
+      <div className="flex">
         <Sidebar />
         <Main />
       </div>

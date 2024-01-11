@@ -7,6 +7,7 @@ const ForkifyContext = createContext();
 const ForkifyContextProvider = ({ children }) => {
   const search = useRef('');
   const [recipeId, setRecipeId] = useState(0);
+  const [bookmarked, setBookMarked] = useState([]);
 
   const { data: recipes, refetch } = useQuery({
     queryKey: ['recipes', search?.current?.value],
@@ -18,6 +19,13 @@ const ForkifyContextProvider = ({ children }) => {
     queryFn: () => getRecipe(recipeId),
   });
 
+  const servings = recipeDetail?.servings;
+
+  function handleAddBookmarked(recipe) {
+    if (!recipe) return;
+    setBookMarked([...bookmarked, recipe]);
+  }
+  console.log(bookmarked);
   return (
     <ForkifyContext.Provider
       value={{
@@ -28,6 +36,8 @@ const ForkifyContextProvider = ({ children }) => {
         refetchDetail,
         recipeId,
         setRecipeId,
+        servings,
+        handleAddBookmarked,
       }}
     >
       {children}

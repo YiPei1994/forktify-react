@@ -1,13 +1,19 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useForkify } from '../hooks/useForkify';
 import Ingredients from './Ingredients';
 import { Link } from 'react-router-dom';
 
 function RecipeDetail() {
-  const { recipeDetail } = useForkify();
+  const { recipeDetail, servings, handleAddBookmarked } = useForkify();
+  const [newServing, setNewServing] = useState(servings);
 
-  console.log(recipeDetail);
+  function handleIncrease() {
+    setNewServing((newServing) => newServing + 1);
+  }
 
+  function handleDecrease() {
+    if (newServing > 1) setNewServing((newServing) => newServing - 1);
+  }
   if (!recipeDetail) {
     return (
       <div>
@@ -21,7 +27,6 @@ function RecipeDetail() {
     image_url: img,
     ingredients,
     title,
-    servings,
     source_url: guide,
   } = recipeDetail;
 
@@ -34,14 +39,16 @@ function RecipeDetail() {
       <div>
         <span>{time} Minutes</span>
         <div>
-          {servings} servings <button>-</button>
-          <button>+</button>
+          {newServing} servings <button onClick={handleDecrease}>-</button>
+          <button onClick={handleIncrease}>+</button>
         </div>
-        <button></button>
+        <button onClick={() => handleAddBookmarked(recipeDetail)}>
+          BookMark
+        </button>
       </div>
       <div>
         <h6>recipe ingredients</h6>
-        <div>
+        <div className="flex flex-wrap items-center justify-between">
           {ingredients?.map((ing, i) => (
             <Ingredients key={i} ing={ing} />
           ))}
