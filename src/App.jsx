@@ -3,21 +3,18 @@ import Forkify from './components/Forkify';
 import { ForkifyContextProvider } from './contexts/ForkifyContexts';
 import { Toaster } from 'react-hot-toast';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
+import { BrowserRouter } from 'react-router-dom';
 
-const queryClient = new QueryClient({
-  defaultOptions: {
-    queries: {
-      staleTime: 0,
-    },
-  },
-});
+const queryClient = new QueryClient({});
 function App() {
   return (
     <QueryClientProvider client={queryClient}>
       <ReactQueryDevtools initialIsOpen={false} />
-      <ForkifyContextProvider>
-        <Forkify />
-      </ForkifyContextProvider>
+      <BrowserRouter>
+        <ForkifyContextProvider>
+          <Forkify />
+        </ForkifyContextProvider>
+      </BrowserRouter>
       <Toaster
         position="top-center"
         gutter={12}

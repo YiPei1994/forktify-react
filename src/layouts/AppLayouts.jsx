@@ -4,10 +4,12 @@ import Sidebar from './Sidebar';
 
 function AppLayouts() {
   return (
-    <div>
+    <div className="m-auto flex w-[80%] flex-col gap-6">
       <Header />
-      <Sidebar />
-      <Main />
+      <div>
+        <Sidebar />
+        <Main />
+      </div>
     </div>
   );
 }

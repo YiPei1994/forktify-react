@@ -2,7 +2,7 @@ import RecipeTable from '../components/RecipeTable';
 
 function Sidebar() {
   return (
-    <div>
+    <div className="w-[35%]">
       <RecipeTable />
     </div>
   );
