@@ -1,3 +1,4 @@
+import BookMark from '../components/BookMark';
 import ForkifyOperations from '../components/ForkifyOperations';
 import Logo from '../components/Logo';
 import SearchInput from '../components/SearchInput';
@@ -8,6 +9,7 @@ function Header() {
       <Logo />
       <SearchInput />
       <ForkifyOperations />
+      <BookMark />
     </div>
   );
 }

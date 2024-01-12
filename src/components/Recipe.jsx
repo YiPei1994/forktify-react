@@ -24,7 +24,7 @@ function Recipe({ recipe }) {
         <h4>{title}</h4>
         <span>{publisher}</span>
       </div>
-      <button onClick={() => deletingRecipe(id)}>X</button>
+      {/* <button onClick={() => deletingRecipe(id)}>X</button> */}
     </div>
   );
 }

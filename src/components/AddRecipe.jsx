@@ -3,13 +3,13 @@ import { useAddRecipe } from '../hooks/useAddRecipe';
 import { useForkify } from '../hooks/useForkify';
 import { useEffect, useState } from 'react';
 import { guidGenerator } from '../helpers/randomId';
+import { IoCloudUploadOutline } from 'react-icons/io5';
 
 function AddRecipe() {
   const { handleAddBookmarked } = useForkify();
   const { register, handleSubmit } = useForm();
   const { addRecipe } = useAddRecipe();
   const [guId, setGuId] = useState(0);
-  const test = 'test';
 
   useEffect(() => {
     setGuId(guidGenerator());
@@ -17,7 +17,6 @@ function AddRecipe() {
 
   function onSubmit(data) {
     if (!data) return;
-
     addRecipe(data);
     handleAddBookmarked(data);
   }
@@ -25,125 +24,142 @@ function AddRecipe() {
     <>
       <form
         onSubmit={handleSubmit(onSubmit)}
-        className="flex flex-wrap justify-between py-10"
+        className="flex w-[1000px] flex-wrap  justify-between  p-10"
       >
-        <div className="w-[40%] text-orange-900">
+        <div className="flex w-[48%] flex-col gap-4 text-yellow-950">
           <div className="flex">
-            <p className="uppercase">Recipe Data</p>
+            <p className="my-2 text-2xl uppercase">Recipe Data</p>
             <input type="hidden" value={guId} id="guid" {...register('guid')} />
           </div>
-          <div className="flex w-full items-center">
+          <div className="flex w-full items-center  justify-between">
             <label htmlFor="title">Title</label>
-            <input type="text" id="title" {...register('title')} value={test} />
+            <input
+              className="w-[70%] rounded-md border-[1px] border-yellow-950/10 px-2 py-1  uppercase text-slate-800 outline-none transition-all  focus:border-red-400 focus:bg-red-50"
+              type="text"
+              id="title"
+              {...register('title')}
+            />
           </div>
-          <div>
+          <div className="flex w-full items-center  justify-between">
             <label htmlFor="url">Url</label>
-            <input type="text" id="url" {...register('url')} value={test} />
+            <input
+              className="w-[70%] rounded-md border-[1px] border-yellow-950/10 px-2 py-1  uppercase text-slate-800 outline-none transition-all  focus:border-red-400 focus:bg-red-50"
+              type="text"
+              id="url"
+              {...register('url')}
+            />
           </div>
-          <div>
+          <div className="flex w-full items-center  justify-between">
             <label htmlFor="img_url">Image Url</label>
             <input
               type="text"
               id="img_url"
               {...register('img_url')}
-              value={test}
+              className="w-[70%] rounded-md border-[1px] border-yellow-950/10 px-2 py-1  uppercase text-slate-800 outline-none transition-all  focus:border-red-400 focus:bg-red-50"
             />
           </div>
-          <div>
+          <div className="flex w-full items-center  justify-between">
             <label htmlFor="publisher">Publisher</label>
             <input
               type="text"
               id="publisher"
               {...register('publisher')}
-              value={test}
+              className="w-[70%] rounded-md border-[1px] border-yellow-950/10 px-2 py-1  uppercase text-slate-800 outline-none transition-all  focus:border-red-400 focus:bg-red-50"
             />
           </div>
-          <div>
+          <div className="flex w-full items-center  justify-between">
             <label htmlFor="prep_time">Prep time</label>
             <input
               type="text"
               id="prep_time"
               {...register('prep_time')}
-              value={test}
+              className="w-[70%] rounded-md border-[1px] border-yellow-950/10 px-2 py-1  uppercase text-slate-800 outline-none transition-all  focus:border-red-400 focus:bg-red-50"
             />
           </div>
-          <div>
+          <div className="flex w-full items-center  justify-between">
             <label htmlFor="servings">Servings</label>
             <input
               type="text"
               id="servings"
               {...register('servings')}
-              value={test}
+              className="w-[70%] rounded-md border-[1px] border-yellow-950/10 px-2 py-1  uppercase text-slate-800 outline-none transition-all  focus:border-red-400 focus:bg-red-50"
             />
           </div>
         </div>
-        <div>
-          <div>
-            <p>Ingredients</p>
+        <div className="flex w-[48%] flex-col gap-4 text-orange-950">
+          <div className="flex">
+            <p className="my-2 text-2xl uppercase">Ingredients</p>
           </div>
-          <div>
-            <label htmlFor="ingredient1">ingredient 1</label>
+          <div className="flex w-full items-center  justify-between">
+            <label htmlFor="ingredient1">Ingredient 1</label>
             <input
               type="text"
               id="ingredient1"
               defaultValue="0.5,kg,Rice"
+              className="w-[70%] rounded-md border-[1px] border-yellow-950/10 px-2 py-1  uppercase text-slate-800 outline-none transition-all  focus:border-red-400 focus:bg-red-50"
               placeholder="Format: Quantity, Unit, Description"
               {...register('ingredient1')}
             />
           </div>
-          <div>
-            <label htmlFor="ingredient2">ingredient 2</label>
+          <div className="flex w-full items-center  justify-between">
+            <label htmlFor="ingredient2">Ingredient 2</label>
             <input
               type="text"
               id="ingredient2"
-              value={test}
+              className="w-[70%] rounded-md border-[1px] border-yellow-950/10 px-2 py-1  uppercase text-slate-800 outline-none transition-all  focus:border-red-400 focus:bg-red-50"
               placeholder="Format: Quantity, Unit, Description"
               {...register('ingredient2')}
             />
           </div>
-          <div>
-            <label htmlFor="ingredient3">ingredient 3</label>
+          <div className="flex w-full items-center  justify-between">
+            <label htmlFor="ingredient3">Ingredient 3</label>
             <input
               type="text"
               id="ingredient3"
-              value={test}
+              className="w-[70%] rounded-md border-[1px] border-yellow-950/10 px-2 py-1  uppercase text-slate-800 outline-none transition-all  focus:border-red-400 focus:bg-red-50"
               placeholder="Format: Quantity, Unit, Description"
               {...register('ingredient3')}
             />
           </div>
-          <div>
-            <label htmlFor="ingredient4">ingredient 4</label>
+          <div className="flex w-full items-center  justify-between">
+            <label htmlFor="ingredient4">Ingredient 4</label>
             <input
               type="text"
               id="ingredient4"
-              value={test}
+              className="w-[70%] rounded-md border-[1px] border-yellow-950/10 px-2 py-1  uppercase text-slate-800 outline-none transition-all  focus:border-red-400 focus:bg-red-50"
               placeholder="Format: Quantity, Unit, Description"
               {...register('ingredient4')}
             />
           </div>
-          <div>
-            <label htmlFor="ingredient5">ingredient 5</label>
+          <div className="flex w-full items-center  justify-between">
+            <label htmlFor="ingredient5">Ingredient 5</label>
             <input
               type="text"
               id="ingredient5"
-              value={test}
+              className="w-[70%] rounded-md border-[1px] border-yellow-950/10 px-2 py-1  uppercase text-slate-800 outline-none transition-all  focus:border-red-400 focus:bg-red-50"
               placeholder="Format: Quantity, Unit, Description"
               {...register('ingredient5')}
             />
           </div>
-          <div>
-            <label htmlFor="ingredient6">ingredient 6</label>
+          <div className="flex w-full items-center  justify-between">
+            <label htmlFor="ingredient6">Ingredient 6</label>
             <input
               type="text"
               id="ingredient6"
-              value={test}
+              className="w-[70%] rounded-md border-[1px] border-yellow-950/10 px-2 py-1  uppercase text-slate-800 outline-none transition-all  focus:border-red-400 focus:bg-red-50"
               placeholder="Format: Quantity, Unit, Description"
               {...register('ingredient6')}
             />
           </div>
         </div>
-        <div className="w-full">
-          <button>Upload</button>
+        <div className="mt-12 flex w-full flex-col items-center justify-center">
+          <button className="flex w-auto items-center justify-center rounded-full bg-gradient-to-br from-amber-300 to-red-300 px-8 py-4 uppercase	text-white transition-all hover:scale-105">
+            <IoCloudUploadOutline className="mr-2 h-5 w-5" />
+            <span>Upload (Disabled)</span>
+          </button>
+          <span className="mt-2 text-sm">
+            Disabled due to not polluting the API.
+          </span>
         </div>
       </form>
     </>
