@@ -5,7 +5,15 @@ import { Toaster } from 'react-hot-toast';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 import { BrowserRouter } from 'react-router-dom';
 
-const queryClient = new QueryClient({});
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      staleTime: 1000 * 60 * 60, // 1 hour in ms
+      cacheTime: 1000 * 60 * 60, // 1 hour in ms
+      refetchOnWindowFocus: false, // Disables automatic refetching when browser window is focused.
+    },
+  },
+});
 function App() {
   return (
     <QueryClientProvider client={queryClient}>

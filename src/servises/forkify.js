@@ -35,17 +35,20 @@ export const getRecipe = async (id) => {
   }
 };
 
-export const createRecipe = async ({ name, newData }) => {
-  const res = await fetch(`${API_URL}?search=${name}&key=${API_KEY}`, {
+export const createRecipe = async (newRecipe) => {
+  console.log(newRecipe);
+  const res = await fetch(`${API_URL}/recipes?search=pizza&key=${API_KEY}`, {
     method: 'POST',
-    body: JSON.stringify(newData),
+    body: JSON.stringify(newRecipe),
     headers: {
       'Content-Type': 'application/json',
     },
   });
 
   if (!res.ok) {
-    throw new Error('Couldnt create recipes');
+    const errorResponse = await res.json();
+    console.error('Error creating recipe:', errorResponse);
+    throw new Error('Could not create recipe');
   }
 
   const data = await res.json();
@@ -54,6 +57,7 @@ export const createRecipe = async ({ name, newData }) => {
 };
 
 export const deleteRecipe = async (id) => {
+  console.log(id);
   const res = await fetch(`${API_URL}/${id}?key=${API_KEY}`, {
     method: 'DELETE',
   });

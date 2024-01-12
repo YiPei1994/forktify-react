@@ -1,8 +1,10 @@
+import { useDelete } from '../hooks/useDelete';
 import { useForkify } from '../hooks/useForkify';
 
 function Recipe({ recipe }) {
   const { publisher, image_url, title, id } = recipe;
   const { setRecipeId, refetchDetail } = useForkify();
+  const { deletingRecipe } = useDelete();
 
   function handleClickOnRecipe() {
     setRecipeId(id);
@@ -22,6 +24,7 @@ function Recipe({ recipe }) {
         <h4>{title}</h4>
         <span>{publisher}</span>
       </div>
+      <button onClick={() => deletingRecipe(id)}>X</button>
     </div>
   );
 }

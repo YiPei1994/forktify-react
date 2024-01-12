@@ -1,8 +1,17 @@
+import { useForkify } from '../hooks/useForkify';
+
 function ForkifyOperations() {
+  const { handleDisplayBookmark, handleHideBookmark, setDisplayAddRecipe } =
+    useForkify();
   return (
     <div>
-      <button>add recipe</button>
-      <button>Bookmarks</button>
+      <button onClick={() => setDisplayAddRecipe((d) => !d)}>add recipe</button>
+      <button
+        onMouseOver={handleDisplayBookmark}
+        onMouseOut={handleHideBookmark}
+      >
+        Bookmarks
+      </button>
     </div>
   );
 }
