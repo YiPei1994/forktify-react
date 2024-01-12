@@ -1,19 +1,13 @@
-import BookMark from '../components/BookMark';
 import ForkifyOperations from '../components/ForkifyOperations';
 import Logo from '../components/Logo';
 import SearchInput from '../components/SearchInput';
-import AddRecipe from '../components/addRecipe';
-import { useForkify } from '../hooks/useForkify';
 
 function Header() {
-  const { displayBookmark, displayAddRecipe } = useForkify();
   return (
-    <div>
+    <div className="relative flex w-[100%] items-center justify-between bg-red-50/25">
       <Logo />
       <SearchInput />
       <ForkifyOperations />
-      {displayAddRecipe && <AddRecipe />}
-      {displayBookmark && <BookMark />}
     </div>
   );
 }

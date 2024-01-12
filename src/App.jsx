@@ -4,7 +4,6 @@ import { ForkifyContextProvider } from './contexts/ForkifyContexts';
 import { Toaster } from 'react-hot-toast';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 import { BrowserRouter } from 'react-router-dom';
-
 const queryClient = new QueryClient({
   defaultOptions: {
     queries: {
