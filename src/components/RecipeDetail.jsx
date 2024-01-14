@@ -3,9 +3,10 @@ import { useForkify } from '../hooks/useForkify';
 import Ingredients from './Ingredients';
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
+import Spinner from './Spinner';
 
 function RecipeDetail() {
-  const { recipeDetail, handleAddBookmarked } = useForkify();
+  const { recipeDetail, handleAddBookmarked, isLoadingDetail } = useForkify();
   const {
     cooking_time: time,
     image_url: img,
@@ -22,6 +23,8 @@ function RecipeDetail() {
       setNewServing(servings);
     }
   }, [servings]);
+  if (isLoadingDetail) return <Spinner />;
+
   return (
     <>
       {!recipeDetail && (

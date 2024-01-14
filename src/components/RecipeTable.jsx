@@ -4,9 +4,10 @@ import Recipe from './Recipe';
 import Pagination from './Pagination';
 import { useSearchParams } from 'react-router-dom';
 import { PAGE_SIZE } from '../constatns/PageSize';
+import Spinner from './Spinner';
 
 function RecipeTable() {
-  const { recipes } = useForkify();
+  const { recipes, isLoading } = useForkify();
   const [searchParams] = useSearchParams();
 
   const page = !searchParams.get('page') ? 1 : Number(searchParams.get('page'));
@@ -17,6 +18,7 @@ function RecipeTable() {
   const endIndex = startIndex + PAGE_SIZE;
   const pageItems = recipes?.slice(startIndex, endIndex);
 
+  if (isLoading) return <Spinner />;
   return (
     <>
       <div>

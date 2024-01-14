@@ -3,12 +3,12 @@ import { useForkify } from '../hooks/useForkify';
 
 function Recipe({ recipe }) {
   const { publisher, image_url, title, id } = recipe;
-  const { setRecipeId, refetchDetail } = useForkify();
+  const { searchParams, setSearchParams } = useForkify();
   const { deletingRecipe } = useDelete();
 
   function handleClickOnRecipe() {
-    setRecipeId(id);
-    refetchDetail(id);
+    searchParams.set('recipeId', id);
+    setSearchParams(searchParams);
   }
   return (
     <div
