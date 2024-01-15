@@ -16,7 +16,7 @@ function RecipeDetail() {
     source_url: guide,
   } = recipeDetail || {};
   const [newServing, setNewServing] = useState(servings || 0);
-
+  console.log(newServing);
   useEffect(() => {
     // Set the initial value for newServing when recipeDetail is available
     if (servings !== undefined) {
@@ -65,7 +65,12 @@ function RecipeDetail() {
             <h6>recipe ingredients</h6>
             <div className="flex flex-wrap items-center justify-between">
               {ingredients?.map((ing, i) => (
-                <Ingredients key={i} ing={ing} />
+                <Ingredients
+                  key={i}
+                  ing={ing}
+                  servings={servings}
+                  newServing={newServing}
+                />
               ))}
             </div>
             <div>
