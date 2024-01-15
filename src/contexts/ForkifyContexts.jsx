@@ -1,26 +1,32 @@
 import { createContext, useRef, useState } from 'react';
 import { getAllRecipes, getRecipe } from '../servises/forkify';
 import { useQuery } from '@tanstack/react-query';
+import { useSearchParams } from 'react-router-dom';
 
 const ForkifyContext = createContext();
 
 const ForkifyContextProvider = ({ children }) => {
   const search = useRef('');
-  const [recipeId, setRecipeId] = useState(0);
   const [bookMarked, setBookMarked] = useState(
     JSON.parse(localStorage.getItem('bookmark')) || [],
   );
   const [displayBookmark, setDisplayBookmark] = useState(false);
   const [displayAddRecipe, setDisplayAddRecipe] = useState(false);
+  const [searchParams, setSearchParams] = useSearchParams();
 
-  const { data: recipes, refetch } = useQuery({
+  const selectedRecipeId = searchParams.get('recipeId');
+  const {
+    data: recipes,
+    refetch,
+    isLoading,
+  } = useQuery({
     queryKey: ['recipes', search?.current?.value],
     queryFn: () => getAllRecipes(search?.current?.value),
   });
 
-  const { data: recipeDetail, refetch: refetchDetail } = useQuery({
-    queryKey: ['recipeDetail', recipeId],
-    queryFn: () => getRecipe(recipeId),
+  const { data: recipeDetail, isLoadingDetail } = useQuery({
+    queryKey: ['recipeDetail', selectedRecipeId],
+    queryFn: () => getRecipe(selectedRecipeId),
   });
 
   const fetchedServings = recipeDetail?.servings;
@@ -55,9 +61,6 @@ const ForkifyContextProvider = ({ children }) => {
         recipes,
         refetch,
         recipeDetail,
-        refetchDetail,
-        recipeId,
-        setRecipeId,
         fetchedServings,
         handleAddBookmarked,
         bookMarked,
@@ -66,6 +69,10 @@ const ForkifyContextProvider = ({ children }) => {
         handleHideBookmark,
         displayAddRecipe,
         setDisplayAddRecipe,
+        searchParams,
+        setSearchParams,
+        isLoading,
+        isLoadingDetail,
       }}
     >
       {children}

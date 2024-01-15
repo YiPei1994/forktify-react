@@ -3,28 +3,33 @@ import { useForkify } from '../hooks/useForkify';
 
 function Recipe({ recipe }) {
   const { publisher, image_url, title, id } = recipe;
-  const { setRecipeId, refetchDetail } = useForkify();
+  const { searchParams, setSearchParams } = useForkify();
   const { deletingRecipe } = useDelete();
 
   function handleClickOnRecipe() {
-    setRecipeId(id);
-    refetchDetail(id);
+    searchParams.set('recipeId', id);
+    setSearchParams(searchParams);
   }
+
+  const searchParamsId = searchParams.get('recipeId');
   return (
     <div
       onClick={handleClickOnRecipe}
-      className="mx-auto my-4 flex w-[90%] items-center justify-between "
+      className={`flex w-[100%] cursor-pointer items-center justify-between px-8 py-4 transition-all duration-300 ease-in-out hover:translate-y-0.5 hover:bg-red-50 ${
+        searchParamsId === id ? ' bg-red-50' : ''
+      }`}
     >
       <img
-        className="h-12	 w-12 rounded-full"
+        className="h-14	 w-14 rounded-full"
         src={image_url}
         alt="recipe_img"
       />
-      <div className="flex w-[75%] flex-col ">
-        <h4>{title}</h4>
+      <div className="flex w-[80%] flex-col ">
+        <h4 className="overflow-hidden truncate text-ellipsis uppercase text-red-400">
+          {title}
+        </h4>
         <span>{publisher}</span>
       </div>
-      {/* <button onClick={() => deletingRecipe(id)}>X</button> */}
     </div>
   );
 }
