@@ -2,7 +2,7 @@ import RecipeDetail from '../components/RecipeDetail';
 
 function Main() {
   return (
-    <div className="w-[65%]">
+    <div className="w-[70%]">
       <RecipeDetail />
     </div>
   );

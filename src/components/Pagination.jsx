@@ -25,7 +25,7 @@ function Pagination({ count = 0 }) {
 
   if (pageCount <= 1) return null;
   return (
-    <div>
+    <div className="flex  items-center justify-between gap-4 p-4">
       <p>
         Showing <span>{(currentPage - 1) * PAGE_SIZE} </span> to{' '}
         <span>
@@ -34,13 +34,21 @@ function Pagination({ count = 0 }) {
         of <span>{count}</span> results
       </p>
 
-      <div>
-        <button onClick={previousPage} disabled={currentPage === 1}>
+      <div className="flex w-1/2 justify-between">
+        <button
+          className="flex items-center gap-3 rounded-full p-2 transition-all duration-300 hover:bg-red-50"
+          onClick={previousPage}
+          disabled={currentPage === 1}
+        >
           <HiChevronLeft />
           <span>Previous</span>
         </button>
 
-        <button onClick={nextPage} disabled={currentPage === pageCount}>
+        <button
+          className="flex items-center gap-3 rounded-full p-2 transition-all duration-300 hover:bg-red-50"
+          onClick={nextPage}
+          disabled={currentPage === pageCount}
+        >
           <span>Next</span>
           <HiChevronRight />
         </button>

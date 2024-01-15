@@ -28,7 +28,7 @@ function RecipeDetail() {
   return (
     <>
       {!recipeDetail && (
-        <div>
+        <div className="mt-20 flex items-center justify-center">
           <h1>😉 Start by searching for a recipe or an ingredient.</h1>
         </div>
       )}
