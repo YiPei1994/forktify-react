@@ -9,6 +9,7 @@ function Pagination({ count = 0 }) {
     ? 1
     : Number(searchParams.get('page'));
 
+  console.log(currentPage);
   const pageCount = Math.ceil(count / PAGE_SIZE);
   function previousPage() {
     const previous = currentPage === 1 ? currentPage : currentPage - 1;
@@ -25,9 +26,9 @@ function Pagination({ count = 0 }) {
 
   if (pageCount <= 1) return null;
   return (
-    <div className="flex  items-center justify-between gap-4 p-4">
+    <div className="flex  items-center justify-between gap-4 p-8">
       <p>
-        Showing <span>{(currentPage - 1) * PAGE_SIZE} </span> to{' '}
+        Showing <span>{(currentPage - 1) * PAGE_SIZE + 1} </span> to{' '}
         <span>
           {currentPage === pageCount ? count : currentPage * PAGE_SIZE}
         </span>{' '}
@@ -36,7 +37,7 @@ function Pagination({ count = 0 }) {
 
       <div className="flex w-1/2 justify-between">
         <button
-          className="flex items-center gap-3 rounded-full p-2 transition-all duration-300 hover:bg-red-50"
+          className="flex items-center gap-3 rounded-full p-2 transition-all duration-300 hover:bg-red-50 disabled:opacity-0"
           onClick={previousPage}
           disabled={currentPage === 1}
         >
@@ -45,7 +46,7 @@ function Pagination({ count = 0 }) {
         </button>
 
         <button
-          className="flex items-center gap-3 rounded-full p-2 transition-all duration-300 hover:bg-red-50"
+          className="flex items-center gap-3 rounded-full p-2 transition-all duration-300 hover:bg-red-50 disabled:opacity-0"
           onClick={nextPage}
           disabled={currentPage === pageCount}
         >

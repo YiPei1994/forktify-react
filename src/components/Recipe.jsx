@@ -20,7 +20,7 @@ function Recipe({ recipe }) {
       }`}
     >
       <img
-        className="h-14	 w-14 rounded-full"
+        className="mr-5	 h-14 w-14 rounded-full"
         src={image_url}
         alt="recipe_img"
       />

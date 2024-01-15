@@ -9,9 +9,9 @@ function BookMark() {
       onMouseLeave={handleHideBookmark}
       className={`${
         displayBookmark
-          ? 'pointer-events-auto opacity-100 transition-opacity duration-1000'
-          : 'pointer-events-none opacity-0 transition-opacity duration-1000'
-      } absolute right-0 top-[102px] bg-white py-2`}
+          ? 'pointer-events-auto opacity-100 transition-opacity duration-500'
+          : 'pointer-events-none opacity-0 transition-opacity duration-500'
+      } absolute right-0 top-[102px] z-50 max-w-[350px] bg-white py-2`}
     >
       {bookMarked.map((mark) => (
         <Recipe key={mark.id} recipe={mark} />
