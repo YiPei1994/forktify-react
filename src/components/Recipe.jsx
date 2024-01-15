@@ -13,18 +13,19 @@ function Recipe({ recipe }) {
   return (
     <div
       onClick={handleClickOnRecipe}
-      className="mx-auto my-4 flex w-[90%] items-center justify-between "
+      className="flex w-[100%] items-center justify-between p-4 transition-all duration-500 hover:translate-y-0.5 hover:bg-red-50 "
     >
       <img
-        className="h-12	 w-12 rounded-full"
+        className="h-14	 w-14 rounded-full"
         src={image_url}
         alt="recipe_img"
       />
-      <div className="flex w-[75%] flex-col ">
-        <h4>{title}</h4>
+      <div className="flex w-[80%] flex-col ">
+        <h4 className="overflow-hidden truncate text-ellipsis uppercase text-red-400">
+          {title}
+        </h4>
         <span>{publisher}</span>
       </div>
-      <button onClick={() => deletingRecipe(id)}>X</button>
     </div>
   );
 }
