@@ -10,7 +10,7 @@ function Ingredients({ ing, servings, newServing }) {
   /*   const fractioned = new Fraction(newQuantity).toString(); */
 
   return (
-    <div className="relative flex w-[48%]  py-1">
+    <div className="relative flex w-[48%]  py-1 text-sm">
       <FaCheck className=" w-[35px] text-xl text-red-400" />
       <div className=" mx-3 flex w-[100px]">
         <span>{newQuantity ? newQuantity : ''}</span>

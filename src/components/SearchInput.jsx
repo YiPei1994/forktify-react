@@ -1,14 +1,17 @@
+import { useSearchParams } from 'react-router-dom';
 import { useForkify } from '../hooks/useForkify';
 import { GoSearch } from 'react-icons/go';
 
 function SearchInput() {
   const { search, refetch } = useForkify();
-
+  const [searchParams, setSearchParams] = useSearchParams();
   const handleSearch = (e) => {
     e.preventDefault();
     if (!search?.current?.value) return;
     refetch();
     search.current.value = '';
+    searchParams.set('page', 1);
+    setSearchParams(searchParams);
   };
 
   return (
