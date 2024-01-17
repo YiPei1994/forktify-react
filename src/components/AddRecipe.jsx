@@ -1,16 +1,11 @@
 import { useForm } from 'react-hook-form';
 import { useAddRecipe } from '../hooks/useAddRecipe';
-import { useForkify } from '../hooks/useForkify';
+
 import { IoCloudUploadOutline } from 'react-icons/io5';
 
 function AddRecipe() {
-  const { handleAddBookmarked } = useForkify();
   const { register, handleSubmit } = useForm();
   const { addRecipe } = useAddRecipe();
-
-  const test = 'testtext';
-  const test2 = 40;
-  const test3 = '1,oz,peperoni sliced';
 
   function onSubmit(data) {
     if (!data) return;
@@ -35,7 +30,6 @@ function AddRecipe() {
               className="w-[70%] rounded-md border-[1px] border-yellow-950/10 px-2 py-1  uppercase text-slate-800 outline-none transition-all  focus:border-red-400 focus:bg-red-50"
               type="text"
               id="title"
-              value={test}
               {...register('title')}
             />
           </div>
@@ -45,7 +39,6 @@ function AddRecipe() {
               className="w-[70%] rounded-md border-[1px] border-yellow-950/10 px-2 py-1  uppercase text-slate-800 outline-none transition-all  focus:border-red-400 focus:bg-red-50"
               type="text"
               id="url"
-              value={test}
               {...register('url')}
             />
           </div>
@@ -54,7 +47,6 @@ function AddRecipe() {
             <input
               type="text"
               id="img_url"
-              value={test}
               name="image"
               {...register('image_url')}
               className="w-[70%] rounded-md border-[1px] border-yellow-950/10 px-2 py-1  uppercase text-slate-800 outline-none transition-all  focus:border-red-400 focus:bg-red-50"
@@ -65,7 +57,6 @@ function AddRecipe() {
             <input
               type="text"
               id="publisher"
-              value={test}
               {...register('publisher')}
               className="w-[70%] rounded-md border-[1px] border-yellow-950/10 px-2 py-1  uppercase text-slate-800 outline-none transition-all  focus:border-red-400 focus:bg-red-50"
             />
@@ -75,7 +66,6 @@ function AddRecipe() {
             <input
               type="text"
               id="prep_time"
-              value={test2}
               {...register('prep_time')}
               className="w-[70%] rounded-md border-[1px] border-yellow-950/10 px-2 py-1  uppercase text-slate-800 outline-none transition-all  focus:border-red-400 focus:bg-red-50"
             />
@@ -85,7 +75,6 @@ function AddRecipe() {
             <input
               type="text"
               id="servings"
-              value={test2}
               {...register('servings')}
               className="w-[70%] rounded-md border-[1px] border-yellow-950/10 px-2 py-1  uppercase text-slate-800 outline-none transition-all  focus:border-red-400 focus:bg-red-50"
             />
@@ -111,7 +100,6 @@ function AddRecipe() {
             <input
               type="text"
               id="ingredient2"
-              value={test3}
               className="w-[70%] rounded-md border-[1px] border-yellow-950/10 px-2 py-1  uppercase text-slate-800 outline-none transition-all  focus:border-red-400 focus:bg-red-50"
               placeholder="Format: Quantity, Unit, Description"
               {...register('ingredient2')}
@@ -122,7 +110,6 @@ function AddRecipe() {
             <input
               type="text"
               id="ingredient3"
-              value={test3}
               className="w-[70%] rounded-md border-[1px] border-yellow-950/10 px-2 py-1  uppercase text-slate-800 outline-none transition-all  focus:border-red-400 focus:bg-red-50"
               placeholder="Format: Quantity, Unit, Description"
               {...register('ingredient3')}
@@ -160,7 +147,10 @@ function AddRecipe() {
           </div>
         </div>
         <div className="mt-12 flex w-full flex-col items-center justify-center">
-          <button className="flex w-auto items-center justify-center rounded-full bg-gradient-to-br from-amber-300 to-red-300 px-8 py-4 uppercase	text-white transition-all hover:scale-105">
+          <button
+            disabled={true}
+            className="flex w-auto items-center justify-center rounded-full bg-gradient-to-br from-amber-300 to-red-300 px-8 py-4 uppercase	text-white transition-all hover:scale-105"
+          >
             <IoCloudUploadOutline className="mr-2 h-5 w-5" />
             <span>Upload (Disabled)</span>
           </button>

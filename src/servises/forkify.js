@@ -2,7 +2,7 @@ const API_KEY = 'd166115e-6126-46d3-92ec-663f49f62d3b';
 const API_URL = 'https://forkify-api.herokuapp.com/api/v2/recipes/';
 export const getAllRecipes = async (search) => {
   try {
-    const res = await fetch(`${API_URL}?search=${search}`);
+    const res = await fetch(`${API_URL}?search=${search}?key=${API_KEY}`);
 
     if (!res.ok) {
       throw new Error('Couldnt fetch any recipes');
@@ -20,7 +20,7 @@ export const getAllRecipes = async (search) => {
 export const getRecipe = async (id) => {
   if (!id && id !== 0) return null;
   try {
-    const res = await fetch(`${API_URL}/${id}`);
+    const res = await fetch(`${API_URL}/${id}?key=${API_KEY}`);
 
     if (!res.ok) {
       throw new Error('Couldnt fetch any recipe');
