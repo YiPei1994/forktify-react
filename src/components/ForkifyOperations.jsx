@@ -1,8 +1,8 @@
 import { useForkify } from '../hooks/useForkify';
 import { BsPencilSquare } from 'react-icons/bs';
 import { CiBookmark } from 'react-icons/ci';
-import AddRecipe from '../components/AddRecipe';
 import Modal from './Modal';
+import AddRecipe from './addRecipe';
 
 function ForkifyOperations() {
   const { handleDisplayBookmark } = useForkify();
