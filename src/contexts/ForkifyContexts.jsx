@@ -29,6 +29,7 @@ const ForkifyContextProvider = ({ children }) => {
     queryFn: () => getRecipe(selectedRecipeId),
   });
 
+  console.log(recipeDetail);
   const fetchedServings = recipeDetail?.servings;
 
   function handleAddBookmarked(recipe) {

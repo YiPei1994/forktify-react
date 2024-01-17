@@ -1,8 +1,6 @@
 import { useForm } from 'react-hook-form';
 import { useAddRecipe } from '../hooks/useAddRecipe';
 import { useForkify } from '../hooks/useForkify';
-import { useEffect, useState } from 'react';
-import { guidGenerator } from '../helpers/randomId';
 import { IoCloudUploadOutline } from 'react-icons/io5';
 
 function AddRecipe() {
@@ -11,13 +9,14 @@ function AddRecipe() {
   const { addRecipe } = useAddRecipe();
 
   const test = 'testtext';
-  const test2 = 'testnumber';
+  const test2 = 40;
   const test3 = '1,oz,peperoni sliced';
 
   function onSubmit(data) {
     if (!data) return;
 
     addRecipe(data);
+
     /*  handleAddBookmarked(data); */
   }
   return (
@@ -56,7 +55,8 @@ function AddRecipe() {
               type="text"
               id="img_url"
               value={test}
-              {...register('img_url')}
+              name="image"
+              {...register('image_url')}
               className="w-[70%] rounded-md border-[1px] border-yellow-950/10 px-2 py-1  uppercase text-slate-800 outline-none transition-all  focus:border-red-400 focus:bg-red-50"
             />
           </div>
@@ -164,9 +164,6 @@ function AddRecipe() {
             <IoCloudUploadOutline className="mr-2 h-5 w-5" />
             <span>Upload (Disabled)</span>
           </button>
-          <span className="mt-2 text-sm">
-            Disabled due to not polluting the API.
-          </span>
         </div>
       </form>
     </>
