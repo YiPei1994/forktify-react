@@ -25,10 +25,10 @@ function Recipe({ recipe }) {
         alt="recipe_img"
       />
       <div className="flex w-[80%] flex-col ">
-        <h4 className="overflow-hidden truncate text-ellipsis uppercase text-red-400">
+        <h4 className="text-md overflow-hidden truncate text-ellipsis uppercase text-red-400/75">
           {title}
         </h4>
-        <span>{publisher}</span>
+        <span className="text-sm text-slate-400 ">{publisher}</span>
       </div>
     </div>
   );

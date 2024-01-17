@@ -1,6 +1,5 @@
 /* import { Fraction } from 'fractional'; */
 import { FaCheck } from 'react-icons/fa6';
-import { LiaTimesSolid } from 'react-icons/lia';
 
 function Ingredients({ ing, servings, newServing }) {
   const { quantity, unit, description } = ing;
@@ -10,7 +9,7 @@ function Ingredients({ ing, servings, newServing }) {
   /*   const fractioned = new Fraction(newQuantity).toString(); */
 
   return (
-    <div className="relative flex w-[48%]  py-1">
+    <div className="relative flex w-[48%]  py-1 text-sm">
       <FaCheck className=" w-[35px] text-xl text-red-400" />
       <div className=" mx-3 flex w-[100px]">
         <span>{newQuantity ? newQuantity : ''}</span>

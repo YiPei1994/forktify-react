@@ -45,7 +45,7 @@ function RecipeDetail() {
         </div>
       )}
       {recipeDetail && (
-        <div className="relative">
+        <div className="relative flex flex-col gap-5 ">
           <div className="relative h-[300px] from-amber-300/50 to-red-300/50 before:absolute before:left-0 before:top-0 before:h-full before:w-full	before:bg-gradient-to-br before:content-['']">
             <img
               className="h-full w-full object-cover"
@@ -94,7 +94,7 @@ function RecipeDetail() {
               {exist !== -1 ? <FaBookmark /> : <CiBookmark />}
             </button>
           </div>
-          <div className="flex flex-col items-center justify-center gap-6 bg-slate-100 px-8 py-16">
+          <div className="flex flex-col items-center justify-center gap-6 bg-slate-100 px-12 py-16">
             <h6 className="text-xl uppercase text-red-400">
               recipe ingredients
             </h6>

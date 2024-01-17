@@ -9,7 +9,6 @@ function Pagination({ count = 0 }) {
     ? 1
     : Number(searchParams.get('page'));
 
-  console.log(currentPage);
   const pageCount = Math.ceil(count / PAGE_SIZE);
   function previousPage() {
     const previous = currentPage === 1 ? currentPage : currentPage - 1;
