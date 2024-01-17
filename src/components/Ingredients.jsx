@@ -1,6 +1,5 @@
 /* import { Fraction } from 'fractional'; */
 import { FaCheck } from 'react-icons/fa6';
-import { LiaTimesSolid } from 'react-icons/lia';
 
 function Ingredients({ ing, servings, newServing }) {
   const { quantity, unit, description } = ing;

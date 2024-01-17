@@ -9,16 +9,16 @@ function AddRecipe() {
   const { handleAddBookmarked } = useForkify();
   const { register, handleSubmit } = useForm();
   const { addRecipe } = useAddRecipe();
-  const [guId, setGuId] = useState(0);
 
-  useEffect(() => {
-    setGuId(guidGenerator());
-  }, []);
+  const test = 'testtext';
+  const test2 = 'testnumber';
+  const test3 = '1,oz,peperoni sliced';
 
   function onSubmit(data) {
     if (!data) return;
+
     addRecipe(data);
-    handleAddBookmarked(data);
+    /*  handleAddBookmarked(data); */
   }
   return (
     <>
@@ -29,7 +29,6 @@ function AddRecipe() {
         <div className="flex w-[48%] flex-col gap-4 text-yellow-950">
           <div className="flex">
             <p className="my-2 text-2xl uppercase">Recipe Data</p>
-            <input type="hidden" value={guId} id="guid" {...register('guid')} />
           </div>
           <div className="flex w-full items-center  justify-between">
             <label htmlFor="title">Title</label>
@@ -37,6 +36,7 @@ function AddRecipe() {
               className="w-[70%] rounded-md border-[1px] border-yellow-950/10 px-2 py-1  uppercase text-slate-800 outline-none transition-all  focus:border-red-400 focus:bg-red-50"
               type="text"
               id="title"
+              value={test}
               {...register('title')}
             />
           </div>
@@ -46,6 +46,7 @@ function AddRecipe() {
               className="w-[70%] rounded-md border-[1px] border-yellow-950/10 px-2 py-1  uppercase text-slate-800 outline-none transition-all  focus:border-red-400 focus:bg-red-50"
               type="text"
               id="url"
+              value={test}
               {...register('url')}
             />
           </div>
@@ -54,6 +55,7 @@ function AddRecipe() {
             <input
               type="text"
               id="img_url"
+              value={test}
               {...register('img_url')}
               className="w-[70%] rounded-md border-[1px] border-yellow-950/10 px-2 py-1  uppercase text-slate-800 outline-none transition-all  focus:border-red-400 focus:bg-red-50"
             />
@@ -63,6 +65,7 @@ function AddRecipe() {
             <input
               type="text"
               id="publisher"
+              value={test}
               {...register('publisher')}
               className="w-[70%] rounded-md border-[1px] border-yellow-950/10 px-2 py-1  uppercase text-slate-800 outline-none transition-all  focus:border-red-400 focus:bg-red-50"
             />
@@ -72,6 +75,7 @@ function AddRecipe() {
             <input
               type="text"
               id="prep_time"
+              value={test2}
               {...register('prep_time')}
               className="w-[70%] rounded-md border-[1px] border-yellow-950/10 px-2 py-1  uppercase text-slate-800 outline-none transition-all  focus:border-red-400 focus:bg-red-50"
             />
@@ -81,6 +85,7 @@ function AddRecipe() {
             <input
               type="text"
               id="servings"
+              value={test2}
               {...register('servings')}
               className="w-[70%] rounded-md border-[1px] border-yellow-950/10 px-2 py-1  uppercase text-slate-800 outline-none transition-all  focus:border-red-400 focus:bg-red-50"
             />
@@ -106,6 +111,7 @@ function AddRecipe() {
             <input
               type="text"
               id="ingredient2"
+              value={test3}
               className="w-[70%] rounded-md border-[1px] border-yellow-950/10 px-2 py-1  uppercase text-slate-800 outline-none transition-all  focus:border-red-400 focus:bg-red-50"
               placeholder="Format: Quantity, Unit, Description"
               {...register('ingredient2')}
@@ -116,6 +122,7 @@ function AddRecipe() {
             <input
               type="text"
               id="ingredient3"
+              value={test3}
               className="w-[70%] rounded-md border-[1px] border-yellow-950/10 px-2 py-1  uppercase text-slate-800 outline-none transition-all  focus:border-red-400 focus:bg-red-50"
               placeholder="Format: Quantity, Unit, Description"
               {...register('ingredient3')}

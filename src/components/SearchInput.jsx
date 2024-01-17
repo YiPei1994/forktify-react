@@ -3,7 +3,7 @@ import { useForkify } from '../hooks/useForkify';
 import { GoSearch } from 'react-icons/go';
 
 function SearchInput() {
-  const { search, refetch } = useForkify();
+  const { search = '', refetch } = useForkify();
   const [searchParams, setSearchParams] = useSearchParams();
   const handleSearch = (e) => {
     e.preventDefault();
