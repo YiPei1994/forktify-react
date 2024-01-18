@@ -1,10 +1,8 @@
-import { useDelete } from '../hooks/useDelete';
 import { useForkify } from '../hooks/useForkify';
 
 function Recipe({ recipe }) {
   const { publisher, image_url, title, id } = recipe;
   const { searchParams, setSearchParams } = useForkify();
-  const { deletingRecipe } = useDelete();
 
   function handleClickOnRecipe() {
     searchParams.set('recipeId', id);
